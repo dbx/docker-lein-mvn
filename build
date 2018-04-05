@@ -1,0 +1,5 @@
+#!/bin/bash
+
+image_name="moby-unit-test"
+echo "Building image with the name of ${image_name}"
+docker build -t ${image_name} .

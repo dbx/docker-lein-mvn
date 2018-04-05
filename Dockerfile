@@ -1,5 +1,8 @@
 FROM maven:3.5.3-jdk-8-alpine
 
+USER root
+WORKDIR /root
+
 RUN apk update \
     && apk add ruby ruby-dev ruby-json ruby-rdoc ruby-irb
 

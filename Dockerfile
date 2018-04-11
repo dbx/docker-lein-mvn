@@ -1,16 +1,21 @@
-FROM maven:3.5.3-jdk-8-alpine
+FROM debian
+ARG UID="107"
+ENV USER='moby-unit-test'
 
-USER root
-WORKDIR /root
+RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-8-jdk
 
-RUN apk update \
-    && apk add ruby ruby-dev ruby-json ruby-rdoc ruby-irb
+RUN useradd -s /bin/bash -m ${USER} -u ${UID} && echo "$USER:$USER" | chpasswd && adduser ${USER} sudo && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN gem install rubysl-ostruct \
     && gem install rubysl-optparse
 
 ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/bin/lein
-RUN chmod u+x /usr/bin/lein
+RUN chmod a+rx /usr/bin/lein
+
+USER ${USER}
+WORKDIR /home/${USER}
+
+RUN mkdir .m2/
 
 # Checks
 RUN lein --version

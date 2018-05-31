@@ -17,6 +17,8 @@ WORKDIR /home/${USER}
 
 RUN mkdir .m2/
 
+COPY settings.xml .m2/settings.xml
+
 # Checks
 RUN lein --version
 RUN mvn --version

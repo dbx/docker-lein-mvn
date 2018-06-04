@@ -27,5 +27,5 @@ COPY render-maven-settings render-maven-settings
 ARG NO_ARTIFACTORY
 ARG ARTIFACTORY_ADDRESS
 
-RUN ./render-maven-settings > .m2/settings.xml
-RUN echo 'settings.xml rendered.\n' && cat .m2/settings.xml
+RUN ./render-maven-settings "${HOME}/.m2/settings.xml"
+RUN echo 'settings.xml rendered.' && cat .m2/settings.xml

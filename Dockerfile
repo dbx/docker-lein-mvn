@@ -29,5 +29,4 @@ ARG NO_ARTIFACTORY
 # Build arg. If specified, image will be built with custom artifactory address for maven to use.
 ARG ARTIFACTORY_ADDRESS
 
-RUN ./render-maven-settings "${HOME}/.m2/settings.xml"
-RUN echo 'settings.xml rendered. Content:' && cat .m2/settings.xml
+RUN ./render-maven-settings ".m2/settings.xml"

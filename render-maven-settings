@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PATH_TO_SAVE=$1
+echo ${PATH_TO_SAVE}
 
 if [ "${NO_ARTIFACTORY}" == "true" ]; then
   echo 'Artifactory disabled. Not deploying settings.xml to ".m2" folder.'
@@ -16,3 +17,6 @@ if [ -z ${ARTIFACTORY_ADDRESS} ]; then
 fi
 
 sed -e "s/\${artifactory.address}/${ARTIFACTORY_ADDRESS}/g" ${HOME}/settings-template.xml > ${PATH_TO_SAVE}
+
+echo 'settings.xml rendered. Content:'
+cat ${PATH_TO_SAVE}

@@ -16,6 +16,14 @@ Ahhoz, hogy a saját Maven kliens az Artifactory szerverhez kapcsolódjon, módo
 
 A távoli Maven repository elérése és a `${HOME}/.m2/settings.xml` fájl a *Dockerfile* buildelésének idejében paraméterezhető:
 
+**Artifactory alapértelmezett elérése**
+
+`docker build .`
+
+**Artifactory elérésének megadása**
+
+`docker build --build-arg ARTIFACTORY_ADDRESS=${host}:${port} .`
+
 **Artifactory kikapcsolása**
 
 `docker build --build-arg NO_ARTIFACTORY=true .`
@@ -23,9 +31,5 @@ A távoli Maven repository elérése és a `${HOME}/.m2/settings.xml` fájl a *D
 Csak `true` érték esetén lép életbe a kapcsoló!
 
 
-**Artifactory elérésének megadása**
 
-`docker build --build-arg ARTIFACTORY_ADDRESS=${host}:${port} .`
-
-
-Enjoy.
+**Enjoy.**

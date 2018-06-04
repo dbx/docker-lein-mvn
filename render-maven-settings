@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "${NO_ARTIFACTORY}" == "true" ]; then
+  echo 'Artifactory disabled. Not deploying settings.xml to ".m2" folder.'
+  exit 0
+fi
+
+DEFAULT_ARTIFACTORY_ADDRESS='artifactory:8081'
+
+if [ -z ${ARTIFACTORY_ADDRESS} ]; then
+  echo 'ARTIFACTORY_ADDRESS environment variable not set!'
+  echo "Defaulting to \"${DEFAULT_ARTIFACTORY_ADDRESS}\""
+  export ARTIFACTORY_ADDRESS=${DEFAULT_ARTIFACTORY_ADDRESS}
+fi
+
+sed -e "s/\${artifactory.address}/${ARTIFACTORY_ADDRESS}/g" ${HOME}/settings-template.xml

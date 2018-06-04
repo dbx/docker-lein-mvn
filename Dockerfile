@@ -15,11 +15,13 @@ RUN chmod a+rx /usr/bin/lein
 USER ${USER}
 WORKDIR /home/${USER}
 
-RUN mkdir .m2/
-
-COPY settings.xml .m2/settings.xml
-
 # Checks
 RUN lein --version
 RUN mvn --version
 RUN bash --version
+
+RUN mkdir .m2/
+COPY settings-template.xml .
+COPY render-maven-settings render-maven-settings
+
+ENTRYPOINT ./render-maven-settings > .m2/settings.xml && cat .m2/settings.xml

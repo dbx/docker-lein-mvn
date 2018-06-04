@@ -24,4 +24,8 @@ RUN mkdir .m2/
 COPY settings-template.xml .
 COPY render-maven-settings render-maven-settings
 
-ENTRYPOINT ./render-maven-settings > .m2/settings.xml && cat .m2/settings.xml
+ARG NO_ARTIFACTORY
+ARG ARTIFACTORY_ADDRESS
+
+RUN ./render-maven-settings > .m2/settings.xml
+RUN echo 'settings.xml rendered.\n' && cat .m2/settings.xml

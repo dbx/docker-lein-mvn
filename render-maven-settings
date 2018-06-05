@@ -8,7 +8,7 @@ if [ "${NO_ARTIFACTORY}" == "true" ]; then
   exit 0
 fi
 
-DEFAULT_ARTIFACTORY_ADDRESS='artifactory:8081'
+DEFAULT_ARTIFACTORY_ADDRESS='artifactory'
 
 if [ -z ${ARTIFACTORY_ADDRESS} ]; then
   echo 'ARTIFACTORY_ADDRESS environment variable not set!'

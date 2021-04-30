@@ -15,7 +15,12 @@ RUN chmod a+rx /usr/bin/lein
 USER ${USER}
 WORKDIR /home/${USER}
 
+# java jdk 8 verzio beallitasa
+RUN sudo rm /etc/alternatives/java
+RUN sudo ln -s /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java /etc/alternatives/java
+
 # Checks
+RUN java -version
 RUN lein --version
 RUN mvn --version
 RUN bash --version

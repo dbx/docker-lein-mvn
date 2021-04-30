@@ -1,4 +1,4 @@
-FROM debian
+FROM ubuntu:bionic
 ARG UID="107"
 ENV USER='moby-unit-test'
 

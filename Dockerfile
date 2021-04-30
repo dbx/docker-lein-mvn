@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 ARG UID="107"
 ENV USER='moby-unit-test'
 
-RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-8-jdk
+RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-8-jdk git
 
 RUN useradd -s /bin/bash -m ${USER} -u ${UID} && echo "$USER:$USER" | chpasswd && adduser ${USER} sudo && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
@@ -24,6 +24,7 @@ RUN java -version
 RUN lein --version
 RUN mvn --version
 RUN bash --version
+RUN git --version
 
 RUN mkdir .m2/
 COPY settings-template.xml .

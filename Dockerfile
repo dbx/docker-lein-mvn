@@ -1,8 +1,8 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 ARG UID="114"
 ENV USER='moby-unit-test'
 
-RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-8-jdk git
+RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-17-jdk git
 
 RUN useradd -s /bin/bash -m ${USER} -u ${UID} && echo "$USER:$USER" | chpasswd && adduser ${USER} sudo && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
@@ -17,7 +17,7 @@ WORKDIR /home/${USER}
 
 # java jdk 8 verzio beallitasa
 RUN sudo rm /etc/alternatives/java
-RUN sudo ln -s /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java /etc/alternatives/java
+RUN sudo ln -s /usr/lib/jvm/java-1.17.0-openjdk-amd64/bin/java /etc/alternatives/java
 
 # Checks
 RUN java -version

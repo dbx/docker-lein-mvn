@@ -7,7 +7,7 @@ RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-17-jd
 RUN useradd -s /bin/bash -m ${USER} -u ${UID} && echo "$USER:$USER" | chpasswd && adduser ${USER} sudo && echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN gem install rubysl-ostruct \
-    && gem install rubysl-optparse
+    && gem install optparse
 
 ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/bin/lein
 RUN chmod a+rx /usr/bin/lein

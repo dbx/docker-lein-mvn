@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-ARG UID="107"
+ARG UID="114"
 ENV USER='moby-unit-test'
 
 RUN apt-get update && apt-get -y install ruby maven wget curl sudo openjdk-8-jdk git

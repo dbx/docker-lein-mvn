@@ -41,4 +41,7 @@
   <activeProfiles>
     <activeProfile>artifactory</activeProfile>
   </activeProfiles>
+  <pluginGroups>
+    <pluginGroup>org.openclover</pluginGroup>
+  </pluginGroups>
 </settings>
